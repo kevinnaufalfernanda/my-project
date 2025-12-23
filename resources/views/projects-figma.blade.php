@@ -34,8 +34,8 @@
                     <div class="flex items-center justify-between mb-4">
                         <span class="px-3 py-1 bg-violet-500/10 border border-violet-500/20 text-violet-400 text-xs font-bold uppercase tracking-wider rounded-full">Figma</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-violet-400 transition-colors">Redesign Aplikasi Fashion</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-1">Perancangan ulang UI/UX aplikasi e-commerce untuk meningkatkan pengalaman belanja pengguna mobile.</p>
+                    <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-violet-400 transition-colors">Redesign Aplikasi Gojek</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-1">Proyek perancangan ulang antarmuka aplikasi Gojek yang dikerjakan saat mengikuti pelatihan GDGOC di Universitas Brawijaya.</p>
                     <a href="#" class="inline-flex items-center text-sm font-bold text-white group-hover:text-violet-400 transition-colors uppercase tracking-wider">
                         Lihat Studi Kasus <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                     </a>

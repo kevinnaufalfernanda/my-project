@@ -33,13 +33,14 @@
             </script>
             @endif
 
-            <form action="{{ route('contact.send') }}" method="POST" class="space-y-8">
+            <form action="{{ route('contact.send') }}" method="POST" class="space-y-8" novalidate id="contactForm">
                 @csrf
                 <!-- Name -->
                 <div>
                     <label for="name" class="block text-sm font-semibold text-slate-300 mb-2">Nama Lengkap</label>
-                    <div class="mt-1">
-                        <input type="text" name="name" id="name" required class="py-4 px-5 block w-full shadow-sm text-white bg-slate-800/50 border border-slate-700 focus:border-cyan-500 focus:bg-slate-800 focus:ring-0 rounded-xl transition-all duration-300 placeholder-slate-500" placeholder="Masukkan nama Anda">
+                    <div class="mt-1 relative">
+                        <input type="text" name="name" id="name" class="py-4 px-5 block w-full shadow-sm text-white bg-slate-800/50 border border-slate-700 focus:border-cyan-500 focus:bg-slate-800 focus:ring-0 rounded-xl transition-all duration-300 placeholder-slate-500" placeholder="Masukkan nama Anda">
+                        <p class="text-rose-400 text-xs mt-1 hidden" id="nameError">Nama wajib diisi.</p>
                         @error('name')
                             <p class="text-rose-400 text-xs mt-1">{{ $message }}</p>
                         @enderror
@@ -49,8 +50,9 @@
                 <!-- Email -->
                 <div>
                     <label for="email" class="block text-sm font-semibold text-slate-300 mb-2">Alamat Email</label>
-                    <div class="mt-1">
-                        <input type="email" name="email" id="email" required class="py-4 px-5 block w-full shadow-sm text-white bg-slate-800/50 border border-slate-700 focus:border-cyan-500 focus:bg-slate-800 focus:ring-0 rounded-xl transition-all duration-300 placeholder-slate-500" placeholder="nama@email.com">
+                    <div class="mt-1 relative">
+                        <input type="email" name="email" id="email" class="py-4 px-5 block w-full shadow-sm text-white bg-slate-800/50 border border-slate-700 focus:border-cyan-500 focus:bg-slate-800 focus:ring-0 rounded-xl transition-all duration-300 placeholder-slate-500" placeholder="nama@email.com">
+                        <p class="text-rose-400 text-xs mt-1 hidden" id="emailError">Email wajib diisi dengan format yang benar.</p>
                         @error('email')
                             <p class="text-rose-400 text-xs mt-1">{{ $message }}</p>
                         @enderror
@@ -60,8 +62,9 @@
                 <!-- Message -->
                 <div>
                     <label for="message" class="block text-sm font-semibold text-slate-300 mb-2">Pesan</label>
-                    <div class="mt-1">
-                        <textarea id="message" name="message" rows="5" required class="py-4 px-5 block w-full shadow-sm text-white bg-slate-800/50 border border-slate-700 focus:border-cyan-500 focus:bg-slate-800 focus:ring-0 rounded-xl transition-all duration-300 placeholder-slate-500 resize-none" placeholder="Ceritakan detail proyek atau pertanyaan Anda..."></textarea>
+                    <div class="mt-1 relative">
+                        <textarea id="message" name="message" rows="5" class="py-4 px-5 block w-full shadow-sm text-white bg-slate-800/50 border border-slate-700 focus:border-cyan-500 focus:bg-slate-800 focus:ring-0 rounded-xl transition-all duration-300 placeholder-slate-500 resize-none" placeholder="Ceritakan detail proyek atau pertanyaan Anda..."></textarea>
+                         <p class="text-rose-400 text-xs mt-1 hidden" id="messageError">Pesan wajib diisi.</p>
                         @error('message')
                             <p class="text-rose-400 text-xs mt-1">{{ $message }}</p>
                         @enderror
@@ -75,6 +78,71 @@
                     </button>
                 </div>
             </form>
+
+            <script>
+                document.getElementById('contactForm').addEventListener('submit', function(e) {
+                    let isValid = true;
+                    
+                    // Name Validation
+                    const name = document.getElementById('name');
+                    const nameError = document.getElementById('nameError');
+                    if (!name.value.trim()) {
+                        nameError.classList.remove('hidden');
+                        name.classList.add('border-rose-500', 'focus:border-rose-500');
+                        name.classList.remove('border-slate-700', 'focus:border-cyan-500');
+                        isValid = false;
+                    } else {
+                        nameError.classList.add('hidden');
+                        name.classList.remove('border-rose-500', 'focus:border-rose-500');
+                        name.classList.add('border-slate-700', 'focus:border-cyan-500');
+                    }
+
+                    // Email Validation
+                    const email = document.getElementById('email');
+                    const emailError = document.getElementById('emailError');
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!email.value.trim() || !emailRegex.test(email.value)) {
+                        emailError.classList.remove('hidden');
+                        email.classList.add('border-rose-500', 'focus:border-rose-500');
+                        email.classList.remove('border-slate-700', 'focus:border-cyan-500');
+                        isValid = false;
+                    } else {
+                        emailError.classList.add('hidden');
+                        email.classList.remove('border-rose-500', 'focus:border-rose-500');
+                        email.classList.add('border-slate-700', 'focus:border-cyan-500');
+                    }
+
+                    // Message Validation
+                    const message = document.getElementById('message');
+                    const messageError = document.getElementById('messageError');
+                    if (!message.value.trim()) {
+                        messageError.classList.remove('hidden');
+                        message.classList.add('border-rose-500', 'focus:border-rose-500');
+                        message.classList.remove('border-slate-700', 'focus:border-cyan-500');
+                        isValid = false;
+                    } else {
+                        messageError.classList.add('hidden');
+                        message.classList.remove('border-rose-500', 'focus:border-rose-500');
+                        message.classList.add('border-slate-700', 'focus:border-cyan-500');
+                    }
+
+                    if (!isValid) {
+                        e.preventDefault();
+                    }
+                });
+                
+                // Real-time validation removal on input
+                ['name', 'email', 'message'].forEach(id => {
+                    document.getElementById(id).addEventListener('input', function() {
+                        const error = document.getElementById(id + 'Error');
+                        if (!error.classList.contains('hidden')) {
+                            error.classList.add('hidden');
+                            this.classList.remove('border-rose-500', 'focus:border-rose-500');
+                            this.classList.add('border-slate-700', 'focus:border-cyan-500');
+                        }
+                    });
+                });
+            </script>
         </div>
     </div>
 </div>

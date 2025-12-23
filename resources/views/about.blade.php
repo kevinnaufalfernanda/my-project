@@ -73,16 +73,19 @@
                     </h3>
                     <div class="space-y-4">
                         <!-- Certificate Item 1 -->
-                        <div class="flex items-start gap-4 p-3 rounded-lg hover:bg-slate-800/50 transition-colors">
-                            <div class="flex-shrink-0 w-10 h-10 bg-emerald-500/10 rounded-full flex items-center justify-center border border-emerald-500/20 text-emerald-400">
+                        <a href="https://ude.my/UC-ae9f5490-e95a-4a4b-b5bd-087e319b1d41" target="_blank" rel="noopener noreferrer" class="flex items-start gap-4 p-3 rounded-lg hover:bg-slate-800/50 transition-colors group/cert">
+                            <div class="flex-shrink-0 w-10 h-10 bg-emerald-500/10 rounded-full flex items-center justify-center border border-emerald-500/20 text-emerald-400 group-hover/cert:bg-emerald-500/20 transition-colors">
                                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                             </div>
-                            <div>
-                                <h4 class="text-slate-200 font-bold text-sm">Recon For Bug Bounty, Penetration Testers & Ethical Hackers</h4>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="text-slate-200 font-bold text-sm group-hover/cert:text-emerald-400 transition-colors">Recon For Bug Bounty, Penetration Testers & Ethical Hackers</h4>
+                                    <svg class="w-4 h-4 text-slate-500 opacity-0 group-hover/cert:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                </div>
                                 <p class="text-slate-500 text-xs mt-1">Udemy - Issued Jan 15, 2025</p>
                                 <p class="text-slate-400 text-xs mt-1 leading-relaxed">Instruktur: Vivek Pandit. Durasi: 9 Jam.</p>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
